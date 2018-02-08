@@ -126,7 +126,7 @@
        */
       //Get what we need
       $contentXML=initializeMainContent();
-      if ($contentXML == null) {
+      if (empty($contentXML)) {
           echo "<h1>Failed to load content xml file. Make sure it is properly ".
                "defined in config.xml.</h1>";
       } else {
@@ -148,7 +148,7 @@
             height="43" width="110"></a>
             <ul class="navlist">-->
             <?php
-                if ($contentXML != null) {
+                if (!empty($contentXML)) {
                     $navBarContent = getNavBarHTML($contentXML);
                     echo $navBarContent;
                 }
@@ -163,7 +163,7 @@
             <ul class="menu">      
               <?php
                //parse files. get what we need
-                if ($contentXML != null) {
+                if (!empty($contentXML)) {
                 	$navigationTitle = getNavigationTitle($contentXML);
                 	$navigationItems = getNavigationItems($contentXML);
                 	//display what we received
@@ -181,11 +181,11 @@
         <div style="position: absolute; top: 0; height: 80px; left: 0; right: 0; overflow:hidden;">
           <!--HEADER FOR CENTER PANE-->
           <div style="padding-bottom:30px;">
-  		      <?php echo "<center>$header</center>"; ?>
+              <?= "<center>$header</center>"; ?>
           </div>
         </div>
         <div style="position: absolute; top: 80px; left: 0px; right: 0px; bottom: 1.5em;" id="centerDiv">
-          <iframe src="<?php echo $startPage; ?>"
+          <iframe src="<?= $startPage; ?>"
             class="iFrame" id="myDiv" width="100%" height="100%"
             name="innerframe" frameBorder="0">Browser not compatible.
           </iframe> 
@@ -200,7 +200,7 @@
             v1.2.8
           </div>
           <div style="text-align: center">
-            <?php echo getUser(); ?>
+            <?= getUser(); ?>
               <?php
                 //get user
                 $groups = getGroups();
